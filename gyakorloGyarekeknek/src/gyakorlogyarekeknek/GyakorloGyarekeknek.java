@@ -88,11 +88,32 @@ public class GyakorloGyarekeknek {
     
     
     private static int feladatOsszeAllit() {
+           int szam1 = rndszamGeneralas();
+           int szam2 = rndszamGeneralas();
+           int vegeredmeny=0;
            
-    }
+        switch (bekerFeladatTipus()) {
+            case '+':
+               vegeredmeny=szam1+szam2;
+                
+            case '-':
+                vegeredmeny=szam1-szam2;
+            case '/':
+                vegeredmeny=szam1/szam2;
+            case '*':
+                vegeredmeny=szam1*szam2;
+        }
+           return vegeredmeny;
+        } 
 
     private static char bekerFeladatTipus() {
-        return ;
+        Scanner sc = new Scanner(System.in);
+        char muvjel = sc.next().charAt(0);
+        boolean muvelet = (muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*');
+        while (!(muvelet)) {            
+            muvjel = sc.next().charAt(0);
+        }
+        return muvjel;
     }
 
     private static int feladat() {
@@ -103,8 +124,8 @@ public class GyakorloGyarekeknek {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private static void bekerValasz() {
-
+    private static bekerValasz() {
+        return null;
     }
 
     private static void valami() {
@@ -143,7 +164,7 @@ public class GyakorloGyarekeknek {
         return tovabb;
     }
 
-    private static int opHelye(char feladatTipus) {
+    private static int opHelye() {
         int helye;
         int hossz=operatorok.length;
         int i = 0;
@@ -152,5 +173,9 @@ public class GyakorloGyarekeknek {
         }
         return i;
     }
- 
+
+    private static int rndszamGeneralas() {
+       Random rnd = new Random();
+       int rndszam = rnd.nextInt(99 - 1)+ 1;
+       return rndszam;
 }
