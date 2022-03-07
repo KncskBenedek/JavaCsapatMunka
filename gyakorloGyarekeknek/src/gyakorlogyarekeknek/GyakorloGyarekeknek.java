@@ -20,7 +20,7 @@ public class GyakorloGyarekeknek {
 
         do {
             torzs();
-        } while ();
+        } while (true);//rossz
         statisztika();
     }
 
@@ -73,37 +73,50 @@ public class GyakorloGyarekeknek {
      }
         System.out.println(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
         return false;
-
-
-        bekerFeladatTipus();
-        int valasz = feladatOsszeAllit();
-        kiir();
-        bekerValasz();
         
-        
-      
-      
-
     }
 
     
-    
-    
+
+
     private static int feladatOsszeAllit() {
-           return null;
-    }
+        
+           int szam1 = rndszamGeneralas();
+           int szam2 = rndszamGeneralas();
+           int vegeredmeny=0;
+           
+        switch (bekerFeladatTipus()) {
+            case '+':
+               vegeredmeny=szam1+szam2;
+                
+            case '-':
+                vegeredmeny=szam1-szam2;
+            case '/':
+                vegeredmeny=szam1/szam2;
+            case '*':
+                vegeredmeny=szam1*szam2;
+        }
+           return vegeredmeny;
+        } 
 
     private static char bekerFeladatTipus() {
-        return null;
+        Scanner sc = new Scanner(System.in);
+        char muvjel = sc.next().charAt(0);
+        boolean muvelet = (muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*');
+        while (!(muvelet)) {            
+            muvjel = sc.next().charAt(0);
+        }
+        return muvjel;
+
     }
 
 
     private static void kiir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("123");
     }
 
-    private static void bekerValasz() {
-
+    private static int bekerValasz() {
+        return null;
     }
 
     private static void torzs() {
@@ -154,10 +167,16 @@ public class GyakorloGyarekeknek {
         }
         return i;
     }
-
+    
     private static void statisztika() {
-        
-        System.out.println("");
+        System.out.println("123");
     }
  
+
+    private static int rndszamGeneralas() {
+       Random rnd = new Random();
+       int rndszam = rnd.nextInt(99 - 1)+ 1;
+       return rndszam;
+
+}
 }
