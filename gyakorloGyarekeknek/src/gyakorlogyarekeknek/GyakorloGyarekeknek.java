@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 
 public class GyakorloGyarekeknek {
-    
+    //static változók
+    static char[] operatorok = {'+', '-', '*', '/'};
     static int[] rosszMegoldasok = new int[4];
-    public static void main0(String[] args) {
+    
+    
+    public static void main(String[] args) {
         do {
             valami();
         } while ();
@@ -20,7 +23,7 @@ public class GyakorloGyarekeknek {
            
     }
 
-    private static int bekerFeladatTipus() {
+    private static char bekerFeladatTipus() {
         return ;
     }
 
@@ -37,21 +40,26 @@ public class GyakorloGyarekeknek {
     }
 
     private static void valami() {
-       int feladatTipus = bekerFeladatTipus();
+       char feladatTipus = bekerFeladatTipus();
+       int hely = opHelye();
         do {
            int megoldas = feladatOsszeAllit();
+           int felhaszValasz = bekerValasz();
+           if(felhaszValasz != megoldas){
+               rosszMegoldasok[hely] += 1;
+               
+           }
            
-           
-        } while (beAkarMeg());
+        } while (beAkarMeg("\"Akar még feladatot? Igen:I || Nem:N\""));
     }
 
-    private static boolean beAkarMeg() {
+    private static boolean beAkarMeg(String szoveg) {
         Scanner scan = new Scanner(System.in);
         boolean jo = false;
         boolean tovabb = false;
         String valasz;
         do {
-            System.out.println("Akar még feladatot? Igen:I || Nem:N");
+            System.out.println(szoveg); //"Akar még feladatot? Igen:I || Nem:N"
             valasz = scan.nextLine();
             if (valasz.equals("I")) {
                 tovabb = true;
@@ -60,21 +68,21 @@ public class GyakorloGyarekeknek {
                 jo = true;
                 tovabb = false;
             }else{
-                System.out.println("Rossz válasz! Adja meg újra!");
+                System.out.println("Rossz adat! Adja meg újra!");
             }
             
         } while (!jo);
         return tovabb;
     }
-    
-    public static void main(String[] args) {
-          Random rnd = new Random();
-            
-            for (int i = 0; i < 100; i++) {
-                int szam = rnd.nextInt(100-1+1)+1;
-                System.out.println(szam);
-            
+
+    private static int opHelye(char feladatTipus) {
+        int helye;
+        int hossz=operatorok.length;
+        int i = 0;
+        while (!(feladatTipus == operatorok[i])) {
+            i++;
         }
+        return i;
     }
-    
-            }
+ 
+}
