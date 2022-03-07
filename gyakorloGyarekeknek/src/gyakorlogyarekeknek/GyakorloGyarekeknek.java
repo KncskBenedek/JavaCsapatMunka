@@ -1,6 +1,7 @@
 package gyakorlogyarekeknek;
 
 
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -12,14 +13,15 @@ public class GyakorloGyarekeknek {
     //static változók
     static char[] operatorok = {'+', '-', '*', '/'};
     static int[] rosszMegoldasok = new int[4];
+    static int[] hanyDBfeladat = new int[4];
     
     
     public static void main(String[] args) {
 
         do {
-            valami();
+            torzs();
         } while ();
-
+        statisztika();
     }
 
     private static boolean osszeadasEllenorzes(int szam1, int szam2) {
@@ -88,16 +90,13 @@ public class GyakorloGyarekeknek {
     
     
     private static int feladatOsszeAllit() {
-           
+           return null;
     }
 
     private static char bekerFeladatTipus() {
-        return ;
+        return null;
     }
 
-    private static int feladat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     private static void kiir() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -107,18 +106,21 @@ public class GyakorloGyarekeknek {
 
     }
 
-    private static void valami() {
+    private static void torzs() {
        char feladatTipus = bekerFeladatTipus();
-       int hely = opHelye();
+       int hely = opHelye(feladatTipus);
         do {
            int megoldas = feladatOsszeAllit();
+           hanyDBfeladat[hely] += 1;
            int felhaszValasz = bekerValasz();
            if(felhaszValasz != megoldas){
                rosszMegoldasok[hely] += 1;
-               
+               System.out.println("Rossz megoldást adott meg!");
+           }else{
+               System.out.println("jó megoldást adott megg!");
            }
            
-        } while (beAkarMeg("\"Akar még feladatot? Igen:I || Nem:N\""));
+        } while (beAkarMeg("Akar még feladatot? Igen:I || Nem:N"));
     }
 
     private static boolean beAkarMeg(String szoveg) {
@@ -151,6 +153,11 @@ public class GyakorloGyarekeknek {
             i++;
         }
         return i;
+    }
+
+    private static void statisztika() {
+        
+        System.out.println("");
     }
  
 }
