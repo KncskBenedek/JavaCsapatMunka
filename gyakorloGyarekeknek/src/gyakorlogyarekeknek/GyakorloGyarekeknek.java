@@ -1,21 +1,14 @@
 package gyakorlogyarekeknek;
 
-<<<<<<< HEAD
 import java.util.Random;
-=======
 import java.util.Scanner;
->>>>>>> f5ba6a32ca41ad62e8db4973cce7e8900ec70656
-
 
 public class GyakorloGyarekeknek {
-    
-    
-    public static void main(String[] args) {
-<<<<<<< HEAD
-       osszeadasEllenorzes(7,95);
-       szorzatEllenorzes(25,20);
-       kivonasEllenorzes(30,40);
-       osztasEllenorzes(70,25);
+    public static void main0(String[] args) {   
+        bekerFeladatTipus();
+        int valasz = feladatOsszeAllit();
+        kiir();
+        bekerValasz();
     }
 
     private static boolean osszeadasEllenorzes(int szam1, int szam2) {
@@ -67,38 +60,55 @@ public class GyakorloGyarekeknek {
      }
         System.out.println(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
         return false;
-
-=======
-        bekerFeladatTipus();
-        int valasz = feladatOsszeAllit();
-        kiir();
-        bekerValasz();
+    }    
         
-        
-      
-      
-    }
-
     private static int feladatOsszeAllit() {
+           
+        return 0;
            
     }
 
     private static void bekerFeladatTipus() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        
     }
 
     private static int feladat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        return 0;
+
     }
 
     private static void kiir() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    private static String ellenorzesInt(String valasz) {
+        Scanner scr = new Scanner(System.in);
+        boolean isNumeric = valasz.chars().allMatch( Character::isDigit );
+        while(!isNumeric){
+            System.out.println("Kérem számot adjon meg: ");
+            valasz =scr.nextLine();
+            isNumeric = valasz.chars().allMatch( Character::isDigit );
+        }
+        return valasz;
+    }
+    
+    private static int bekerValasz() {
+        Scanner scr = new Scanner(System.in);       
+        System.out.println("Kérem adja meg a megoldást: ");   
+        String valasz =scr.nextLine();
+        valasz =ellenorzesInt(valasz);
+        int megoldas = Integer.parseInt(valasz);
+        return megoldas;
+        
+    }
+    public static void main(String[] args) {
+        bekerValasz();
+    }
+        
+        
+      
+      
     }
 
-    private static void bekerValasz() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
->>>>>>> f5ba6a32ca41ad62e8db4973cce7e8900ec70656
-    }
-    
-    
-}
+
+
