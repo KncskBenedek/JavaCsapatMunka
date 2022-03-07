@@ -15,9 +15,8 @@ public class GyakorloGyarekeknek {
     static int[] rosszMegoldasok = new int[4];
     static int[] hanyDBfeladat = new int[4];
     
-    
+   
     public static void main(String[] args) {
-
         do {
             torzs();
         } while (false);//rossz
@@ -106,7 +105,7 @@ public class GyakorloGyarekeknek {
                 vegeredmeny=szam1*szam2;
         }
            return vegeredmeny;
-        } 
+        }  
 
     private static char bekerFeladatTipus() {
         System.out.println("Kéremd adja meg milyen alapműveletet szeretne[+ - * /]");
@@ -118,7 +117,7 @@ public class GyakorloGyarekeknek {
         }
         return muvjel;
 
-    }
+    } 
 
 
     private static void kiir() {
@@ -193,6 +192,20 @@ public class GyakorloGyarekeknek {
 }
 
     static void statisztika() {
+        int legtobbHiba = maxErtek();
         System.out.println("123");
+    }
+
+    private static int maxErtek() {
+        int i = 1;
+        int legNagyHely = 0;
+        int hossz = rosszMegoldasok.length;
+        while (i < hossz) {
+            if (rosszMegoldasok[i] > rosszMegoldasok[legNagyHely]) {
+                legNagyHely = i;
+            }
+            i++;
+        }
+        return legNagyHely;
     }
 }
