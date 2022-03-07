@@ -1,23 +1,23 @@
 package gyakorlogyarekeknek;
 
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GyakorloGyarekeknek {
-    public static void main(String[] args) {   
-        
-    }
-    //static változók
+public class GyakorloGyarekeknek {   
     static char[] operatorok = {'+', '-', '*', '/'};
     static int[] rosszMegoldasok = new int[4];  
+    static int[] hanyDBfeladat = new int[4];
+    
     public static void main(String[] args) {
 
         do {
-            valami();
-        } while (true);
-
+            torzs();
+        } while (false);
+        statisztika();
     }
+    
 
     private static boolean osszeadasEllenorzes(int szam1, int szam2) {
        Random rnd = new Random();
@@ -31,7 +31,7 @@ public class GyakorloGyarekeknek {
        return true;
      
     }
-
+    
     private static boolean szorzatEllenorzes(int szam1, int szam2) {
         Random rnd = new Random();
         int szamlalao = 0;
@@ -68,37 +68,42 @@ public class GyakorloGyarekeknek {
      }
         System.out.println(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
         return false;
-    }    
-        
-
-  
-
+    }          
     
-    
-    
-    private static int feladatOsszeAllit() {
-           
-        return 0;
-           
-    }
-
-    private static void bekerFeladatTipus() {
-    }   
-        
     private static char bekerFeladatTipus() {
-        
-        return '0';
-        
+        System.out.println("Kéremd adja meg milyen alapműveletet szeretne[+ - * /]");
+        Scanner sc = new Scanner(System.in);
+        char muvjel = sc.next().charAt(0);
+        boolean muvelet = (muvjel == '+' || muvjel == '-' ||  muvjel == '/' || muvjel == '*');
+        while (!(muvelet)) {
+            muvjel = sc.next().charAt(0);
+        }
+        return muvjel;
+
     }
-
-    private static int feladat() {
-
+    private static int feladatOsszeAllit() {
+        
+           int szam1 = rndszamGeneralas();
+           int szam2 = rndszamGeneralas();
+           int vegeredmeny=0;
+           
         return 0;
-
+           
     }
-
-    private static void kiir() {
-    }
+        switch (bekerFeladatTipus()) {
+            case '+':
+               vegeredmeny=szam1+szam2;
+                
+            case '-':
+                vegeredmeny=szam1-szam2;
+            case '/':
+                vegeredmeny=szam1/szam2;
+            case '*':
+                vegeredmeny=szam1*szam2;
+        
+           return vegeredmeny;
+        }
+         
     private static String ellenorzesInt(String valasz) {
         Scanner scr = new Scanner(System.in);
         boolean isNumeric = valasz.chars().allMatch( Character::isDigit );
@@ -107,8 +112,12 @@ public class GyakorloGyarekeknek {
             valasz =scr.nextLine();
             isNumeric = valasz.chars().allMatch( Character::isDigit );
         }
-        return valasz;
+        return valasz;       
     }
+    private static void kiir() {
+        System.out.println("123");
+    }
+
     
     private static int bekerValasz() {
         Scanner scr = new Scanner(System.in);       
@@ -116,24 +125,26 @@ public class GyakorloGyarekeknek {
         String valasz =scr.nextLine();
         valasz =ellenorzesInt(valasz);
         int megoldas = Integer.parseInt(valasz);
-        return megoldas;
-        
+        return megoldas;      
     }     
     
 
 
-    private static void valami() {
+    private static void torzs() {
        char feladatTipus = bekerFeladatTipus();
-       int hely = opHelye();
+       int hely = opHelye(feladatTipus);
         do {
            int megoldas = feladatOsszeAllit();
+           hanyDBfeladat[hely] += 1;
            int felhaszValasz = bekerValasz();
            if(felhaszValasz != megoldas){
                rosszMegoldasok[hely] += 1;
-               
+               System.out.println("Rossz megoldást adott meg!");
+           }else{
+               System.out.println("jó megoldást adott megg!");
            }
            
-        } while (beAkarMeg("\"Akar még feladatot? Igen:I || Nem:N\""));
+        } while (beAkarMeg("Akar még feladatot? Igen:I || Nem:N"));
     }
 
     private static boolean beAkarMeg(String szoveg) {
@@ -167,6 +178,15 @@ public class GyakorloGyarekeknek {
         }
         return i;
     }
+    
+    private static void statisztika() {
+        System.out.println("123");
+    }
  
+
+    private static int rndszamGeneralas() {
+       Random rnd = new Random();
+       int rndszam = rnd.nextInt(99 - 1)+ 1;
+       return rndszam;
+    }
 }
-  
