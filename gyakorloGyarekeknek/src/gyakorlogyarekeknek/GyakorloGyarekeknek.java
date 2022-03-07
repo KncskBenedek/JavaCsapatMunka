@@ -2,6 +2,7 @@ package gyakorlogyarekeknek;
 
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Random;
 
 
@@ -31,7 +32,7 @@ public class GyakorloGyarekeknek {
          szam2 = rnd.nextInt(99 - 1)+ 1;
          szamlalao++;
      }
-        System.out.println(szam1+"+"+szam2+" = "+(szam1+szam2)+" Ennyiszer generált újjat: "+szamlalao);
+        kiiras(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
        return true;
      
     }
@@ -44,7 +45,7 @@ public class GyakorloGyarekeknek {
         szam2 = rnd.nextInt(99 - 1)+ 1;
         szamlalao++;
      }
-       System.out.println(szam1+"*"+szam2+" = "+(szam1*szam2)+" Ennyiszer generált újjat: "+szamlalao);
+       kiiras(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
        return true;
 
     }
@@ -57,7 +58,7 @@ public class GyakorloGyarekeknek {
             szam2 = rnd.nextInt(99 - 1)+ 1;
             szamlalao++;
      }
-        System.out.println(szam1+"-"+szam2+" = "+(szam1-szam2)+" Ennyiszer generált újjat: "+szamlalao);
+        kiiras(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
         return false;
 
     }
@@ -70,7 +71,8 @@ public class GyakorloGyarekeknek {
             szam2 = rnd.nextInt(99 - 1)+ 1;
             szamlalao++;
      }
-        System.out.println(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
+        kiiras(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
+        //System.out.println(szam1+"/"+szam2+" = "+(szam1/szam2)+" Ennyiszer generált újjat: "+szamlalao);
         return false;
         
     }
@@ -79,7 +81,8 @@ public class GyakorloGyarekeknek {
         Scanner scr = new Scanner(System.in);
         boolean isNumeric = valasz.chars().allMatch( Character::isDigit );
         while(!isNumeric){
-            System.out.println("Kérem számot adjon meg: ");
+            kiiras("Kérem számot adjon meg: ");
+            //System.out.println("Kérem számot adjon meg: ");
             valasz =scr.nextLine();
             isNumeric = valasz.chars().allMatch( Character::isDigit );
         }
@@ -93,26 +96,47 @@ public class GyakorloGyarekeknek {
            int szam2 = rndszamGeneralas();
            int vegeredmeny=0;
            
-        switch (bekerFeladatTipus()) {
-            case '+':
+           if (bekerFeladatTipus()=='+') {
+               kiiras(szam1+"+"+szam2);
                vegeredmeny=szam1+szam2;
-                
+           } else if (bekerFeladatTipus()=='-'){
+               kiiras(szam1+"-"+szam2);
+                vegeredmeny=szam1-szam2;
+           } else if (bekerFeladatTipus()=='*'){
+               kiiras(szam1+"*"+szam2);
+                vegeredmeny=szam1*szam2;
+           } else if (bekerFeladatTipus()=='/'){
+               kiiras(szam1+"/"+szam2);
+                vegeredmeny=szam1/szam2;
+           }
+           /* 
+           
+        switch (bekerFeladatTipus()) {
+            case bekerFeladatTipus()=='+':
+                kiiras(szam1+"+"+szam2);
+               vegeredmeny=szam1+szam2;
             case '-':
+                kiiras(szam1+"-"+szam2);
                 vegeredmeny=szam1-szam2;
             case '/':
+                kiiras(szam1+"/"+szam2);
                 vegeredmeny=szam1/szam2;
             case '*':
+                kiiras(szam1+"*"+szam2);
                 vegeredmeny=szam1*szam2;
         }
+           */
            return vegeredmeny;
         }  
 
     private static char bekerFeladatTipus() {
-        System.out.println("Kéremd adja meg milyen alapműveletet szeretne[+ - * /]");
+        //System.out.println("Kéremd adja meg milyen alapműveletet szeretne[+ - * /]");
+        kiiras("Kérem adja meg milyen alapműveletet szeretne[+ - * /]");
         Scanner sc = new Scanner(System.in);
         char muvjel = sc.next().charAt(0);
-        boolean muvelet = (muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*');
-        while (!(muvelet)) {            
+        //boolean muvelet = (muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*');
+        while (!((muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*'))) {
+            kiiras("Nem jo a muvelet!");
             muvjel = sc.next().charAt(0);
         }
         return muvjel;
@@ -120,13 +144,12 @@ public class GyakorloGyarekeknek {
     } 
 
 
-    private static void kiir() {
-        System.out.println("123");
-    }
+
 
     private static int bekerValasz() {
         Scanner scr = new Scanner(System.in);
-        System.out.println("Kérem adja meg a megoldást: ");
+        kiiras("Kérem adja meg a megoldást: ");
+        //System.out.println("Kérem adja meg a megoldást: ");
         String valasz =scr.nextLine();
         valasz =ellenorzesInt(valasz);
         int megoldas = Integer.parseInt(valasz);
@@ -142,9 +165,11 @@ public class GyakorloGyarekeknek {
            int felhaszValasz = bekerValasz();
            if(felhaszValasz != megoldas){
                rosszMegoldasok[hely] += 1;
-               System.out.println("Rossz megoldást adott meg!");
+               kiiras("Rossz megoldást adott meg!");
+               //System.out.println("Rossz megoldást adott meg!");
            }else{
-               System.out.println("jó megoldást adott megg!");
+               kiiras("jó megoldást adott meg!");
+               //System.out.println("jó megoldást adott megg!");
            }
            
         } while (beAkarMeg("Akar még feladatot? Igen:I || Nem:N"));
@@ -158,14 +183,16 @@ public class GyakorloGyarekeknek {
         do {
             System.out.println(szoveg); //"Akar még feladatot? Igen:I || Nem:N"
             valasz = scan.nextLine();
-            if (valasz.equals("I")) {
+            valasz = valasz.toLowerCase();
+            if (valasz.equals("i")) {
                 tovabb = true;
                 jo = true;
-            }else if(valasz.equals("N")){
+            }else if(valasz.equals("n")){
                 jo = true;
                 tovabb = false;
             }else{
-                System.out.println("Rossz adat! Adja meg újra!");
+                kiiras("Rossz adat! Adja meg újra!");
+                //System.out.println("Rossz adat! Adja meg újra!");
             }
             
         } while (!jo);
@@ -191,6 +218,7 @@ public class GyakorloGyarekeknek {
 
 }
 
+
     static void statisztika() {
         int legtobbHiba = maxErtek();
         System.out.println("123");
@@ -208,4 +236,11 @@ public class GyakorloGyarekeknek {
         }
         return legNagyHely;
     }
+
+
+    private static void kiiras(String szoveg) {
+        System.out.println(szoveg);
+    }
+    
+
 }
