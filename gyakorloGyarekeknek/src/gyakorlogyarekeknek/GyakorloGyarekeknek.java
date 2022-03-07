@@ -20,7 +20,7 @@ public class GyakorloGyarekeknek {
     public static void main(String[] args) {
         do {
             torzs();
-        } while (false);//rossz
+        } while (beAkarMeg("Akar más féle feladatokat megoldani? Igen:I || Nem:N"));//rossz
         statisztika();
     }
 
@@ -90,22 +90,22 @@ public class GyakorloGyarekeknek {
     }
 
 
-    private static int feladatOsszeAllit() {
+    private static int feladatOsszeAllit(char feladatTipusa) {
         
            int szam1 = rndszamGeneralas();
            int szam2 = rndszamGeneralas();
            int vegeredmeny=0;
            
-           if (bekerFeladatTipus()=='+') {
+           if (feladatTipusa =='+') {
                kiiras(szam1+"+"+szam2);
                vegeredmeny=szam1+szam2;
-           } else if (bekerFeladatTipus()=='-'){
+           } else if (feladatTipusa=='-'){
                kiiras(szam1+"-"+szam2);
                 vegeredmeny=szam1-szam2;
-           } else if (bekerFeladatTipus()=='*'){
+           } else if (feladatTipusa=='*'){
                kiiras(szam1+"*"+szam2);
                 vegeredmeny=szam1*szam2;
-           } else if (bekerFeladatTipus()=='/'){
+           } else if (feladatTipusa=='/'){
                kiiras(szam1+"/"+szam2);
                 vegeredmeny=szam1/szam2;
            }
@@ -160,7 +160,7 @@ public class GyakorloGyarekeknek {
        char feladatTipus = bekerFeladatTipus();
        int hely = opHelye(feladatTipus);
         do {
-           int megoldas = feladatOsszeAllit();
+           int megoldas = feladatOsszeAllit(feladatTipus);
            hanyDBfeladat[hely] += 1;
            int felhaszValasz = bekerValasz();
            if(felhaszValasz != megoldas){
