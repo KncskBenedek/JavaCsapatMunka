@@ -20,7 +20,7 @@ public class GyakorloGyarekeknek {
 
         do {
             torzs();
-        } while (true);//rossz
+        } while (false);//rossz
         statisztika();
     }
 
@@ -76,7 +76,16 @@ public class GyakorloGyarekeknek {
         
     }
 
-    
+    private static String ellenorzesInt(String valasz) {
+        Scanner scr = new Scanner(System.in);
+        boolean isNumeric = valasz.chars().allMatch( Character::isDigit );
+        while(!isNumeric){
+            System.out.println("Kérem számot adjon meg: ");
+            valasz =scr.nextLine();
+            isNumeric = valasz.chars().allMatch( Character::isDigit );
+        }
+        return valasz;
+    }
 
 
     private static int feladatOsszeAllit() {
@@ -100,6 +109,7 @@ public class GyakorloGyarekeknek {
         } 
 
     private static char bekerFeladatTipus() {
+        System.out.println("Kéremd adja meg milyen alapműveletet szeretne[+ - * /]");
         Scanner sc = new Scanner(System.in);
         char muvjel = sc.next().charAt(0);
         boolean muvelet = (muvjel == '+' || muvjel == '-' || muvjel == '/' || muvjel == '*');
@@ -116,7 +126,12 @@ public class GyakorloGyarekeknek {
     }
 
     private static int bekerValasz() {
-        return null;
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Kérem adja meg a megoldást: ");
+        String valasz =scr.nextLine();
+        valasz =ellenorzesInt(valasz);
+        int megoldas = Integer.parseInt(valasz);
+        return megoldas;
     }
 
     private static void torzs() {
@@ -168,9 +183,6 @@ public class GyakorloGyarekeknek {
         return i;
     }
     
-    private static void statisztika() {
-        System.out.println("123");
-    }
  
 
     private static int rndszamGeneralas() {
@@ -179,4 +191,8 @@ public class GyakorloGyarekeknek {
        return rndszam;
 
 }
+
+    static void statisztika() {
+        System.out.println("123");
+    }
 }
