@@ -220,7 +220,15 @@ public class GyakorloGyarekeknek {
 
     static void statisztika() {
         int legtobbHiba = maxErtek();
-        System.out.println("123");
+        int hossz = operatorok.length;
+        kiiras("Feladat típus | feladat DB | elrontott | elrontott % ");
+        for (int i = 0; i < hossz; i++) {
+            int szazalek = (int) ((100.0/hanyDBfeladat[i])* rosszMegoldasok[i]);
+            System.out.printf("%13c | %10d | %9d | %11d%%\n", operatorok[i], hanyDBfeladat[i], rosszMegoldasok[i], szazalek);
+        }
+        
+        
+        
     }
 
     private static int maxErtek() {
