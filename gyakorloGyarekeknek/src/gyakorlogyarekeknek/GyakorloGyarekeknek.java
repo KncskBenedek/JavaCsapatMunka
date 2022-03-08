@@ -1,10 +1,10 @@
 package gyakorlogyarekeknek;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import static java.util.Comparator.reverseOrder;
-import java.util.Locale;
+//import java.util.Arrays;
+//import java.util.Comparator;
+//import static java.util.Comparator.reverseOrder;
+//import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,8 +21,6 @@ public class GyakorloGyarekeknek {
         } while (beAkarMeg("Akar más féle feladatokat megoldani? Igen:I || Nem:N"));//rossz
         statisztika();
     }
-
-
 
     private static boolean osszeadasEllenorzes(int szam1, int szam2) { // nincs használva
         Random rnd = new Random();
@@ -131,7 +129,7 @@ public class GyakorloGyarekeknek {
 
     private static int bekerValasz() { //try catchre mert evvel lehet hibára futni
         Scanner scr = new Scanner(System.in);
-        kiiras("Kérem adja meg a megoldást: "); 
+        kiiras("Kérem adja meg a megoldást: ");
         //System.out.println("Kérem adja meg a megoldást: ");
         String valasz = scr.nextLine();
         valasz = ellenorzesInt(valasz);
@@ -203,7 +201,7 @@ public class GyakorloGyarekeknek {
             tomb[1] = rnd.nextInt(felso - tomb[0] + 1) + 1;
         } else if (feladatTipus == '-') {
             tomb[0] = rnd.nextInt(felso - also + 1) + also;
-            tomb[1] = rnd.nextInt(tomb[0])+1; //array sortot majd ki kell adni
+            tomb[1] = rnd.nextInt(tomb[0]) + 1; //array sortot majd ki kell adni
             //Arrays.sort(tomb, Comparator.reverseOrder()); // még ez sem az igazi
         } else if (feladatTipus == '*') {
             tomb[0] = rnd.nextInt(felso - also + 1) + also;
@@ -223,12 +221,10 @@ public class GyakorloGyarekeknek {
         int hossz = operatorok.length;
         kiiras("Feladat típus | feladat DB | elrontott | elrontott % ");
         for (int i = 0; i < hossz; i++) {
-            int szazalek = (int) ((100.0/hanyDBfeladat[i])* rosszMegoldasok[i]);
+            int szazalek = (int) ((100.0 / hanyDBfeladat[i]) * rosszMegoldasok[i]);
             System.out.printf("%13c | %10d | %9d | %11d%%\n", operatorok[i], hanyDBfeladat[i], rosszMegoldasok[i], szazalek);
         }
-        
-        
-        
+
     }
 
     private static int maxErtek() {
