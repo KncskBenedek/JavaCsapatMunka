@@ -181,8 +181,6 @@ public class GyakorloGyarekeknek {
     }
 
     private static int opHelye(char feladatTipus) {
-        int helye;
-        int hossz = operatorok.length;
         int i = 0;
         while (!(feladatTipus == operatorok[i])) {
             i++;
@@ -217,7 +215,6 @@ public class GyakorloGyarekeknek {
     }
 
     static void statisztika() {
-        int legtobbHiba = maxErtek();
         int hossz = operatorok.length;
         kiiras("Feladat típus | feladat DB | elrontott | elrontott % ");
         for (int i = 0; i < hossz; i++) {
@@ -227,7 +224,7 @@ public class GyakorloGyarekeknek {
 
     }
 
-    private static int maxErtek() {
+    private static int maxErtek() { //nem használjuk
         int i = 1;
         int legNagyHely = 0;
         int hossz = rosszMegoldasok.length;
