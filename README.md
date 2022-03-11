@@ -1,13 +1,14 @@
 # JavaCsapatMunka
 # kisiskolásoknak matek alapműveletek gyakorlása
-be:
-  
-előfeltétel:
-  
-ki:
-  
-utófeltétel:
 
+##Csapat tagok: Dervalics Attila, Koncsik Benedek, Ódor Norbert
+##Felhasználó nevek(ugyan abba a sorrendbe):konnan933, KncskBenedek, Norbus2000
+
+###Ki mit csinált:
+   Dervalics Attila: Ellenörzések és válasz bekérés
+   Koncsik Benedek: Statisztika, művelet számainak generálása, törzs
+   Ódor Norbert: Feladat számítás, feladat tipus bekérés, kiirás
+    
 
 
   +-/*
